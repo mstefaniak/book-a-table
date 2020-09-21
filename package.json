@@ -1,20 +1,49 @@
 {
-  "name": "beer-offer",
+  "name": "book-a-table",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "i18next": "^19.7.0",
+    "i18next-browser-languagedetector": "^6.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-final-form": "^6.5.1",
+    "react-i18next": "^11.7.2",
     "react-scripts": "3.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "checkTS": "tsc -p tsconfig.json",
+    "lint": "eslint -c .eslintrc.js --ext .js --ext .jsx --ext .ts --ext .tsx src"
+  },
+  "babel": {
+    "plugins": [
+      "@babel/plugin-proposal-optional-chaining"
+    ],
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "corejs": 2,
+          "useBuiltIns": "entry"
+        }
+      ],
+      [
+        "@babel/preset-typescript",
+        {
+          "allExtensions": false,
+          "isTSX": false
+        }
+      ],
+      "@babel/preset-react"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +59,24 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-proposal-optional-chaining": "^7.11.0",
+    "@babel/polyfill": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-additional-return-rules": "^0.0.1",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "prettier": "^2.0.5",
+    "typescript": "^4.0.2"
   }
 }
