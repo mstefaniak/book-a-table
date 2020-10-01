@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^7.1.2",
     "date-fns": "^2.16.1",
     "final-form": "^4.20.1",
+    "firebase": "^7.21.1",
     "i18next": "^19.7.0",
     "i18next-browser-languagedetector": "^6.0.1",
     "react": "^16.13.1",
@@ -77,6 +78,7 @@
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.11.0",
+    "eslint-config-react-app": "^5.2.1",
     "eslint-plugin-additional-return-rules": "^0.0.1",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-prettier": "^3.1.4",
@@ -88,7 +90,6 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": [
-      "yarn checkTS",
       "eslint",
       "git add"
     ],
