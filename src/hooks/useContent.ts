@@ -8,24 +8,26 @@ type DocsType = Array<DocType>;
 
 const useContent = (target: string) => {
   const [content, setContent] = useState<DocsType>([]);
-  const { firebase } = useContext(FirebaseContext)!;
+  const { firebase } = useContext(FirebaseContext);
 
   useEffect(() => {
-    firebase
-      .firestore()
-      .collection(target)
-      .get()
-      .then((snapshot) => {
-        const allContent = snapshot.docs.map((contentObj) => ({
-          ...contentObj.data(),
-          id: contentObj.id,
-        }));
+    if (firebase) {
+      firebase
+        .firestore()
+        .collection(target)
+        .get()
+        .then((snapshot) => {
+          const allContent = snapshot.docs.map((contentObj) => ({
+            ...contentObj.data(),
+            id: contentObj.id,
+          }));
 
-        setContent(allContent);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+          setContent(allContent);
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    }
   }, [firebase, target]);
 
   return { [target]: content };
