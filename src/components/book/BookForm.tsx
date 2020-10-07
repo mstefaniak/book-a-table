@@ -6,6 +6,7 @@ import {
   setSeconds,
   getHours,
   getMinutes,
+  getTime,
   isBefore,
 } from "date-fns";
 import { useTranslation } from "react-i18next";
@@ -34,6 +35,10 @@ interface FormValues {
   name: string;
   email: string;
   area: string;
+  time: Date;
+  date: Date;
+  people: string;
+  comment: string;
 }
 
 type ValidatorResponse = undefined | string;
@@ -48,6 +53,13 @@ const initialValues = {
   date: defaultDate,
   time: setHours(setMinutes(defaultDate, 0), 18),
   area: "anywhere",
+};
+
+const combineDateTime = (date: Date, time: Date): number => {
+  const hour = getHours(time);
+  const minute = getMinutes(time);
+
+  return getTime(setMinutes(setHours(date, hour), minute));
 };
 
 const composeValidators = (...validators: Array<Validator>) => (
@@ -96,7 +108,12 @@ const BookForm = (): React.ReactNode => {
   const onSubmit = async (values: FormValues) => {
     if (firebase) {
       const data = {
-        ...values,
+        name: values.name,
+        email: values.email,
+        area: values.area,
+        people: values.people,
+        comment: values.comment,
+        date: combineDateTime(values.date, values.time),
         status: 0,
       };
       const result = await firebase
