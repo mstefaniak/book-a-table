@@ -1,8 +1,7 @@
 {
   "name": "book-a-table",
   "version": "0.1.0",
-  "homepage:": "http://mstefaniak.github.io/book-a-table/",
-  "private": true,
+  "homepage:": "https://mstefaniak.github.io/book-a-table",
   "dependencies": {
     "@date-io/core": "^2.10.6",
     "@date-io/date-fns": "1.x",
