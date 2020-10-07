@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a1960208afe243e0d3f3a568c11afb70",
+    "revision": "a420158ad31d90f87770a6d4e43a645e",
     "url": "https://mstefaniak.github.io/book-a-table/index.html"
   },
   {
-    "revision": "a66fdbdecba304b8e978",
+    "revision": "650f996e9643aa335e3b",
     "url": "https://mstefaniak.github.io/book-a-table/static/css/main.5ecd60fb.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://mstefaniak.github.io/book-a-table/static/js/2.bce47eb8.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a66fdbdecba304b8e978",
-    "url": "https://mstefaniak.github.io/book-a-table/static/js/main.5faed37f.chunk.js"
+    "revision": "650f996e9643aa335e3b",
+    "url": "https://mstefaniak.github.io/book-a-table/static/js/main.f7a07260.chunk.js"
   },
   {
     "revision": "b6ceb00f19aab9f1685e",

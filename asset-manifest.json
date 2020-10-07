@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "https://mstefaniak.github.io/book-a-table/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "https://mstefaniak.github.io/book-a-table/static/js/main.5faed37f.chunk.js",
-    "main.js.map": "https://mstefaniak.github.io/book-a-table/static/js/main.5faed37f.chunk.js.map",
+    "main.js": "https://mstefaniak.github.io/book-a-table/static/js/main.f7a07260.chunk.js",
+    "main.js.map": "https://mstefaniak.github.io/book-a-table/static/js/main.f7a07260.chunk.js.map",
     "runtime-main.js": "https://mstefaniak.github.io/book-a-table/static/js/runtime-main.3292a7a0.js",
     "runtime-main.js.map": "https://mstefaniak.github.io/book-a-table/static/js/runtime-main.3292a7a0.js.map",
     "static/js/2.bce47eb8.chunk.js": "https://mstefaniak.github.io/book-a-table/static/js/2.bce47eb8.chunk.js",
     "static/js/2.bce47eb8.chunk.js.map": "https://mstefaniak.github.io/book-a-table/static/js/2.bce47eb8.chunk.js.map",
     "index.html": "https://mstefaniak.github.io/book-a-table/index.html",
-    "precache-manifest.83c7ac84d5192c9e7c2fd5504c99e98c.js": "https://mstefaniak.github.io/book-a-table/precache-manifest.83c7ac84d5192c9e7c2fd5504c99e98c.js",
+    "precache-manifest.844b46cd1c9e6a9ca952712bb3637073.js": "https://mstefaniak.github.io/book-a-table/precache-manifest.844b46cd1c9e6a9ca952712bb3637073.js",
     "service-worker.js": "https://mstefaniak.github.io/book-a-table/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "https://mstefaniak.github.io/book-a-table/static/css/main.5ecd60fb.chunk.css.map",
     "static/js/2.bce47eb8.chunk.js.LICENSE.txt": "https://mstefaniak.github.io/book-a-table/static/js/2.bce47eb8.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.3292a7a0.js",
     "static/js/2.bce47eb8.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.5faed37f.chunk.js"
+    "static/js/main.f7a07260.chunk.js"
   ]
 }
