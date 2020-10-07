@@ -33,7 +33,6 @@ import { FirebaseContext } from "../../context/firebase";
 
 interface FormValues {
   name: string;
-  email: string;
   area: string;
   time: Date;
   date: Date;
@@ -78,8 +77,6 @@ const BookForm = (): React.ReactNode => {
   const { firebase } = useContext(FirebaseContext);
   const [success, setSuccess] = useState(false);
   const isNotEmpty: Validator = (value) => (value ? undefined : t("required"));
-  const isEmail = (email?: string): ValidatorResponse =>
-    email && email?.indexOf("@") > -1 ? undefined : t("invalid_email");
   const isNumber = (value?: string): ValidatorResponse =>
     isNaN(Number(value)) ? t("invalid_number") : undefined;
   const isBetween = (min: number, max: number) => (
@@ -109,7 +106,6 @@ const BookForm = (): React.ReactNode => {
     if (firebase) {
       const data = {
         name: values.name,
-        email: values.email,
         area: values.area,
         people: values.people,
         comment: values.comment,
@@ -165,23 +161,6 @@ const BookForm = (): React.ReactNode => {
               <Typography variant="h6" gutterBottom>
                 The Office - Craft Beer Pub
               </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <Field
-                name="email"
-                validate={composeValidators(isNotEmpty, isEmail)}
-              >
-                {({ input, meta }) => (
-                  <TextField
-                    {...input}
-                    label={meta.touched && meta.error ? t("error") : t("email")}
-                    error={meta.touched && !!meta.error}
-                    helperText={
-                      meta.touched && meta.error ? meta.error : t("email_hint")
-                    }
-                  />
-                )}
-              </Field>
             </Grid>
             <Grid item xs={12}>
               <Field name="name" validate={isNotEmpty}>
