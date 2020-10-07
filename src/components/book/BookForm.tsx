@@ -125,6 +125,7 @@ const BookForm = (): React.ReactNode => {
         setSuccess(true);
       } else {
         // TODO: error handling
+        console.error("Booking not saved");
       }
     }
   };
