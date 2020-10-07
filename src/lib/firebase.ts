@@ -5,10 +5,10 @@ import "firebase/auth";
 const isDev = process.env.NODE_ENV === "development";
 const projectId = isDev
   ? "book-a-table-96a18"
-  : process.env.FIREBASE_PROJECT_ID;
+  : process.env.REACT_APP_FIREBASE_PROJECT_ID;
 const apiKey = isDev
   ? "AIzaSyBCooZY6_EXqK5bDrW-toY0IGJ_xM7B8bE"
-  : process.env.FIREBASE_API_KEY;
+  : process.env.REACT_APP_FIREBASE_API_KEY;
 
 const config = {
   apiKey,
