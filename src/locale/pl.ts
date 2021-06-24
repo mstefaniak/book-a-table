@@ -5,6 +5,7 @@ export default {
   date: "Data",
   date_hint: "Możemy zarezerwować najwcześniej na jutro",
   error: "Błąd",
+  genering_error: "Motyla noga! Coś poszło nie tak :(",
   invalid_number: "Nieprawidłowy numer",
   name: "Imię",
   name_hint: "Imię lub pseudonim",
@@ -20,4 +21,6 @@ export default {
   success_message: "Stolik zarezerwowany. Do zobaczenia!",
   time: "Godzina",
   time_hint: "W zakresie od 16:00 do 20:00",
+  too_many_bookings: "Brak odpowiedniej ilości miejsc na wybrany dzień :(",
+  try_again: "Spróbuj ponownie",
 };

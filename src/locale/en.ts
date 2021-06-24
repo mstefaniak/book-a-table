@@ -5,6 +5,7 @@ export default {
   date: "Date",
   date_hint: "Not allowed to book earlier then tomorrow",
   error: "Error",
+  generic_error: "Crap! Something get wrong :(",
   invalid_number: "Not a number",
   name: "First Name",
   name_hint: "First name or nickname",
@@ -20,4 +21,6 @@ export default {
   success_message: "Booking successful. We cannot wait to see you.",
   time: "Time",
   time_hint: "In the range from 16:00 till 20:00",
+  too_many_bookings: "Too many bookings for chosen day :(",
+  try_again: "Try again",
 };

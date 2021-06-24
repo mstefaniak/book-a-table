@@ -1,1 +1,1 @@
-export { useContent } from "./useContent";
+export { useGetCount } from "./useGetCount";

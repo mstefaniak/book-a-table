@@ -6,7 +6,6 @@ import {
   setSeconds,
   getHours,
   getMinutes,
-  getTime,
   isBefore,
 } from "date-fns";
 import { useTranslation } from "react-i18next";
@@ -30,6 +29,8 @@ import {
   DatePicker,
 } from "@material-ui/pickers";
 import { FirebaseContext } from "../../context/firebase";
+import { useGetCount } from "../../hooks";
+import { combineDateTime } from "../../lib/parser";
 
 interface FormValues {
   name: string;
@@ -54,37 +55,34 @@ const initialValues = {
   area: "anywhere",
 };
 
-const combineDateTime = (date: Date, time: Date): number => {
-  const hour = getHours(time);
-  const minute = getMinutes(time);
-
-  return getTime(setMinutes(setHours(date, hour), minute));
-};
-
-const composeValidators = (...validators: Array<Validator>) => (
-  value?: string
-): ValidatorResponse =>
-  validators.reduce(
-    (error: ValidatorResponse, validator) => error || validator(value),
-    undefined
-  );
+const composeValidators =
+  (...validators: Array<Validator>) =>
+  (value?: string): ValidatorResponse =>
+    validators.reduce(
+      (error: ValidatorResponse, validator) => error || validator(value),
+      undefined
+    );
 
 const MIN_PEOPLE = 1;
 const MAX_PEOPLE = 12;
+const MAX_PEOPLE_PER_DAY = 20;
 
 const BookForm = (): React.ReactNode => {
   const { t } = useTranslation();
   const { firebase } = useContext(FirebaseContext);
+  const { getCount } = useGetCount();
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string>();
+
   const isNotEmpty: Validator = (value) => (value ? undefined : t("required"));
   const isNumber = (value?: string): ValidatorResponse =>
     isNaN(Number(value)) ? t("invalid_number") : undefined;
-  const isBetween = (min: number, max: number) => (
-    value?: string
-  ): ValidatorResponse =>
-    Number(value) < min || Number(value) > max
-      ? t("not_between", { min: MIN_PEOPLE, max: MAX_PEOPLE })
-      : undefined;
+  const isBetween =
+    (min: number, max: number) =>
+    (value?: string): ValidatorResponse =>
+      Number(value) < min || Number(value) > max
+        ? t("not_between", { min: MIN_PEOPLE, max: MAX_PEOPLE })
+        : undefined;
   const isValidTime = (time: Date): ValidatorResponse => {
     const hour = getHours(time);
     const minute = getMinutes(time);
@@ -103,28 +101,54 @@ const BookForm = (): React.ReactNode => {
   };
 
   const onSubmit = async (values: FormValues) => {
-    if (firebase) {
-      const data = {
-        name: values.name,
-        area: values.area,
-        people: values.people,
-        comment: values.comment,
-        date: combineDateTime(values.date, values.time),
-        status: 0,
-      };
-      const result = await firebase
-        .firestore()
-        .collection("bookings")
-        .add(data);
+    if (!firebase) {
+      return;
+    }
 
-      if (result) {
-        setSuccess(true);
-      } else {
-        // TODO: error handling
-        console.error("Booking not saved");
-      }
+    const parsedDate = combineDateTime(values.date, values.time);
+    const count = await getCount(parsedDate);
+
+    if (count >= MAX_PEOPLE_PER_DAY) {
+      return setError("too_many_bookings");
+    }
+
+    const data = {
+      name: values.name,
+      area: values.area,
+      people: values.people,
+      comment: values.comment || "",
+      date: parsedDate,
+      status: 0,
+    };
+    const result = await firebase.firestore().collection("bookings").add(data);
+
+    if (result) {
+      setSuccess(true);
+    } else {
+      setError("generic_error");
     }
   };
+
+  if (error) {
+    return (
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Alert severity="error">{t(error)}</Alert>
+        </Grid>
+        <Grid item xs={12}>
+          <Button
+            type="button"
+            variant="contained"
+            onClick={() => {
+              setError(undefined);
+            }}
+          >
+            {t("try_again")}
+          </Button>
+        </Grid>
+      </Grid>
+    );
+  }
 
   if (success) {
     return (
@@ -223,12 +247,10 @@ const BookForm = (): React.ReactNode => {
                   <TextField
                     {...input}
                     label={
-                      meta.touched && meta.error ? t("error") : t("people")
+                      meta.touched && meta.error ? t("error") : t("people_hint")
                     }
                     error={meta.touched && !!meta.error}
-                    helperText={
-                      meta.touched && meta.error ? meta.error : t("people_hint")
-                    }
+                    helperText={meta.touched && meta.error ? meta.error : null}
                   />
                 )}
               </Field>
