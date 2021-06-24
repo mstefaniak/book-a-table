@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "https://mstefaniak.github.io/book-a-table/static/css/main.6dea0f05.chunk.css",
-    "main.js": "https://mstefaniak.github.io/book-a-table/static/js/main.ed20a7ac.chunk.js",
-    "main.js.map": "https://mstefaniak.github.io/book-a-table/static/js/main.ed20a7ac.chunk.js.map",
+    "main.js": "https://mstefaniak.github.io/book-a-table/static/js/main.fbbfd61c.chunk.js",
+    "main.js.map": "https://mstefaniak.github.io/book-a-table/static/js/main.fbbfd61c.chunk.js.map",
     "runtime-main.js": "https://mstefaniak.github.io/book-a-table/static/js/runtime-main.3d4bcf4d.js",
     "runtime-main.js.map": "https://mstefaniak.github.io/book-a-table/static/js/runtime-main.3d4bcf4d.js.map",
-    "static/js/2.7877f571.chunk.js": "https://mstefaniak.github.io/book-a-table/static/js/2.7877f571.chunk.js",
-    "static/js/2.7877f571.chunk.js.map": "https://mstefaniak.github.io/book-a-table/static/js/2.7877f571.chunk.js.map",
+    "static/js/2.e4faac50.chunk.js": "https://mstefaniak.github.io/book-a-table/static/js/2.e4faac50.chunk.js",
+    "static/js/2.e4faac50.chunk.js.map": "https://mstefaniak.github.io/book-a-table/static/js/2.e4faac50.chunk.js.map",
     "index.html": "https://mstefaniak.github.io/book-a-table/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "https://mstefaniak.github.io/book-a-table/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.7877f571.chunk.js.LICENSE.txt": "https://mstefaniak.github.io/book-a-table/static/js/2.7877f571.chunk.js.LICENSE.txt"
+    "static/js/2.e4faac50.chunk.js.LICENSE.txt": "https://mstefaniak.github.io/book-a-table/static/js/2.e4faac50.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3d4bcf4d.js",
-    "static/js/2.7877f571.chunk.js",
+    "static/js/2.e4faac50.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.ed20a7ac.chunk.js"
+    "static/js/main.fbbfd61c.chunk.js"
   ]
 }
