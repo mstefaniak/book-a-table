@@ -5,9 +5,10 @@
   "dependencies": {
     "@date-io/core": "^2.10.6",
     "@date-io/date-fns": "1.x",
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/lab": "^4.0.0-alpha.56",
-    "@material-ui/pickers": "^3.2.10",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@mui/lab": "^5.0.0-alpha.48",
+    "@mui/material": "^5.0.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",

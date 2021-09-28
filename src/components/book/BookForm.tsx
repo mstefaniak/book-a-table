@@ -10,9 +10,10 @@ import {
 } from "date-fns";
 import { useTranslation } from "react-i18next";
 import { Form, Field } from "react-final-form";
-import DateFnsUtils from "@date-io/date-fns";
 import {
+  Alert,
   Button,
+  Box,
   Grid,
   Typography,
   TextField,
@@ -21,13 +22,9 @@ import {
   FormControlLabel,
   FormControl,
   FormLabel,
-} from "@material-ui/core";
-import MuiAlert, { AlertProps } from "@material-ui/lab/Alert";
-import {
-  MuiPickersUtilsProvider,
-  TimePicker,
-  DatePicker,
-} from "@material-ui/pickers";
+} from "@mui/material";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import { LocalizationProvider, DatePicker, TimePicker } from "@mui/lab";
 import { FirebaseContext } from "../../context/firebase";
 import { useGetCount } from "../../hooks";
 import { combineDateTime } from "../../lib/parser";
@@ -43,10 +40,6 @@ interface FormValues {
 
 type ValidatorResponse = undefined | string;
 type Validator = (value?: string) => ValidatorResponse;
-
-const Alert = (props: AlertProps) => {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-};
 
 const defaultDate = addDays(new Date(), 1);
 const initialValues = {
@@ -67,7 +60,7 @@ const MIN_PEOPLE = 1;
 const MAX_PEOPLE = 12;
 const MAX_PEOPLE_PER_DAY = 20;
 
-const BookForm = (): React.ReactNode => {
+const BookForm = (): JSX.Element => {
   const { t } = useTranslation();
   const { firebase } = useContext(FirebaseContext);
   const { getCount } = useGetCount();
@@ -178,13 +171,17 @@ const BookForm = (): React.ReactNode => {
       render={({ handleSubmit, submitting, pristine }) => (
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <Typography variant="h4" gutterBottom>
+            <Grid item xs={12} justifyContent="center">
+              <Typography
+                variant="h4"
+                gutterBottom
+                sx={{ textTransform: "uppercase" }}
+              >
                 {t("book_a_table")}
               </Typography>
-              <Typography variant="h6" gutterBottom>
-                The Office - Craft Beer Pub
-              </Typography>
+              <Box>
+                <img src="/book-a-table/apple-touch-icon.png" />
+              </Box>
             </Grid>
             <Grid item xs={12}>
               <Field name="name" validate={isNotEmpty}>
@@ -200,19 +197,22 @@ const BookForm = (): React.ReactNode => {
                 )}
               </Field>
             </Grid>
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
               <Grid item xs={12}>
                 <Field name="date" validate={isValidDate}>
                   {({ input, meta }) => (
                     <DatePicker
                       {...input}
-                      margin="normal"
-                      format="dd-MM-yyyy"
                       label={
                         meta.touched && meta.error ? t("error") : t("date")
                       }
-                      error={meta.touched && !!meta.error}
-                      helperText={t("date_hint")}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          error={meta.touched && !!meta.error}
+                          helperText={t("date_hint")}
+                        />
+                      )}
                     />
                   )}
                 </Field>
@@ -224,17 +224,21 @@ const BookForm = (): React.ReactNode => {
                       {...input}
                       ampm={false}
                       minutesStep={15}
-                      margin="normal"
                       label={
                         meta.touched && meta.error ? t("error") : t("time")
                       }
-                      error={meta.touched && !!meta.error}
-                      helperText={t("time_hint")}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          error={meta.touched && !!meta.error}
+                          helperText={t("time_hint")}
+                        />
+                      )}
                     />
                   )}
                 </Field>
               </Grid>
-            </MuiPickersUtilsProvider>
+            </LocalizationProvider>
             <Grid item xs={12}>
               <Field
                 name="people"
