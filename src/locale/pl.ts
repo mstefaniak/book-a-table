@@ -1,5 +1,8 @@
 export default {
   add_new_booking: "Zarezerwuj kolejny stolik",
+  beta_info:
+    "To jest wersja BETA systemu do rezerwacji miejsc. Jeśli napotykasz jakieś problemy, ",
+  beta_link: "zgłoś je nam",
   book: "Zarezerwuj",
   book_a_table: "Zarezerwuj stolik",
   date: "Data",

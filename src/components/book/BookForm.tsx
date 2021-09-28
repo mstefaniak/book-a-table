@@ -22,6 +22,7 @@ import {
   FormControlLabel,
   FormControl,
   FormLabel,
+  Link,
 } from "@mui/material";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider, DatePicker, TimePicker } from "@mui/lab";
@@ -308,6 +309,13 @@ const BookForm = (): JSX.Element => {
               </Button>
             </Grid>
           </Grid>
+
+          <Alert sx={{ marginTop: 3 }} severity="info">
+            {t("beta_info")}
+            <Link href="mailto:theofficeszczecin@gmail.com?subject='Book a table - error'">
+              {t("beta_link")}
+            </Link>
+          </Alert>
         </form>
       )}
     />

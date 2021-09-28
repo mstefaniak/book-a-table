@@ -1,5 +1,8 @@
 export default {
   add_new_booking: "Book another table",
+  beta_info:
+    "This is BETA version of our booking app. If you are experiencing any problems, please ",
+  beta_link: "let us know",
   book: "Book",
   book_a_table: "Book a table",
   date: "Date",
