@@ -4,7 +4,7 @@ export default {
     "To jest wersja BETA systemu do rezerwacji miejsc. Jeśli napotykasz jakieś problemy, ",
   beta_link: "zgłoś je nam",
   book: "Zarezerwuj",
-  book_a_table: "Zarezerwuj stolik",
+  book_a_table: "Rezerwacje",
   date: "Data",
   date_hint: "Możemy zarezerwować najwcześniej na jutro",
   error: "Błąd",

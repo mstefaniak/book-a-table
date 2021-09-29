@@ -24,6 +24,8 @@ import {
   FormLabel,
   Link,
 } from "@mui/material";
+import enLocale from "date-fns/locale/en-GB";
+import plLocale from "date-fns/locale/pl";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider, DatePicker, TimePicker } from "@mui/lab";
 import { FirebaseContext } from "../../context/firebase";
@@ -62,7 +64,8 @@ const MAX_PEOPLE = 12;
 const MAX_PEOPLE_PER_DAY = 20;
 
 const BookForm = (): JSX.Element => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = i18n.language === "pl" ? plLocale : enLocale;
   const { firebase } = useContext(FirebaseContext);
   const { getCount } = useGetCount();
   const [success, setSuccess] = useState(false);
@@ -176,11 +179,11 @@ const BookForm = (): JSX.Element => {
               <Typography
                 variant="h4"
                 gutterBottom
-                sx={{ textTransform: "uppercase" }}
+                sx={{ textTransform: "uppercase", textAlign: "center" }}
               >
                 {t("book_a_table")}
               </Typography>
-              <Box>
+              <Box m={4} sx={{ textAlign: "center" }}>
                 <img src="/book-a-table/apple-touch-icon.png" />
               </Box>
             </Grid>
@@ -189,6 +192,7 @@ const BookForm = (): JSX.Element => {
                 {({ input, meta }) => (
                   <TextField
                     {...input}
+                    fullWidth
                     label={meta.touched && meta.error ? t("error") : t("name")}
                     error={meta.touched && !!meta.error}
                     helperText={
@@ -198,7 +202,7 @@ const BookForm = (): JSX.Element => {
                 )}
               </Field>
             </Grid>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <LocalizationProvider dateAdapter={AdapterDateFns} locale={locale}>
               <Grid item xs={12}>
                 <Field name="date" validate={isValidDate}>
                   {({ input, meta }) => (
@@ -210,6 +214,7 @@ const BookForm = (): JSX.Element => {
                       renderInput={(params) => (
                         <TextField
                           {...params}
+                          fullWidth
                           error={meta.touched && !!meta.error}
                           helperText={t("date_hint")}
                         />
@@ -231,6 +236,7 @@ const BookForm = (): JSX.Element => {
                       renderInput={(params) => (
                         <TextField
                           {...params}
+                          fullWidth
                           error={meta.touched && !!meta.error}
                           helperText={t("time_hint")}
                         />
@@ -251,6 +257,7 @@ const BookForm = (): JSX.Element => {
                 {({ input, meta }) => (
                   <TextField
                     {...input}
+                    fullWidth
                     label={
                       meta.touched && meta.error ? t("error") : t("people_hint")
                     }
@@ -291,6 +298,7 @@ const BookForm = (): JSX.Element => {
                 {({ input }) => (
                   <TextField
                     {...input}
+                    fullWidth
                     label={t("other")}
                     helperText={t("other_hint")}
                   />
@@ -303,6 +311,12 @@ const BookForm = (): JSX.Element => {
                 type="submit"
                 variant="contained"
                 color="primary"
+                sx={{
+                  padding: 2,
+                  margin: "0 auto",
+                  display: "block",
+                  width: 200,
+                }}
                 disabled={submitting || pristine}
               >
                 {t("book")}
@@ -312,7 +326,7 @@ const BookForm = (): JSX.Element => {
 
           <Alert sx={{ marginTop: 3 }} severity="info">
             {t("beta_info")}
-            <Link href="mailto:theofficeszczecin@gmail.com?subject='Book a table - error'">
+            <Link href="mailto:theofficeszczecin@gmail.com?subject=Book a table - error">
               {t("beta_link")}
             </Link>
           </Alert>
